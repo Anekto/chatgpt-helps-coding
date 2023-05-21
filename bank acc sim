@@ -6,7 +6,7 @@ class BankAccount:
         self.balance = initial_balance
         self.owner_name = owner_name
         try:
-            self.randomthing = random.randint(0,int(randomthing))
+            self.randomthing = random.randint(0, int(randomthing))
         except:
             pass
 
@@ -25,7 +25,7 @@ class BankAccount:
 
 # Create instances of BankAccount
 account1 = BankAccount("A001", 1000, "John", 20)
-account2 = BankAccount("A002", 500, "Jane",30)
+account2 = BankAccount("A002", 500, "Jane", 30)
 
 # Perform transactions
 account1.deposit(500)
@@ -37,56 +37,44 @@ account2.withdraw(800)
 print(f"Account {account1.account_number} balance: {account1.get_balance()}")
 print(f"Account {account2.account_number} balance: {account2.get_balance()}")
 
-
-
 acc3 = BankAccount("A88888", 1234, "Marcel Haupt", 40)
 
-accounts = [account1,account2,acc3]
+accounts = [account1, account2, acc3]
 
 print(acc3.randomthing)
 
-def __init__():
-    while acc3.balance < 2000:
+while acc3.balance < 2000:
+    for ids in accounts:
+        print(ids.randomthing)
 
-        for ids in accounts:
-            print(ids.randomthing)
+    option = input("Please enter a number, 1 for withdrawal, 2 for deposit: ")
+    option_2 = float(input("Please enter the amount: "))
+    option_3 = int(input("Enter your ID: "))
 
-        option = input("Please enter a number, 1 withdraw, 2 deposit")
-        option_2 = input("Please enter the amount")
-        option_2 = float(option_2)
+    if option == "1":
+        for acc in accounts:
+            if acc.randomthing == option_3:
+                withdraw = acc
+        withdraw.withdraw(option_2)
 
-        option_3 = int(input("Enter your ID"))
-        if option == "1":
-            for acc in accounts:
-                if acc.randomthing == option_3:
-                    withdraw = acc
-            withdraw.withdraw(option_2)
+    if option == "2":
+        for acc in accounts:
+            if acc.randomthing == option_3:
+                deposit = acc
+        deposit.deposit(option_2)
 
+    decision = input("Do you wish to create a new bank account? Press 'y' for yes or 'q' to quit: ")
 
-        if option == "2":
-            for acc in accounts:
-                if acc.randomthing == option_3:
-                    deposit = acc
-            deposit.deposit(option_2)
+    if decision == "y":
+        account_number = input("Enter account number: ")
+        initial_balance = float(input("Enter initial balance: "))
+        owner_name = input("Enter owner name: ")
+        randomthing = int(input("Enter a number for the ID: "))
 
-        decision = input("Do you wish to create a new bank account, press y otherwise q")
+        account = BankAccount(account_number, initial_balance, owner_name, randomthing)
+        accounts.append(account)
 
-        if decision == "y":
+        print(account.randomthing, "This is your ID")
 
-            initial_balance = float(input("Enter initial balance: "))
-            owner_name = input("Enter owner name: ")
-
-
-
-            account = BankAccount(account_number, initial_balance, owner_name,int(input("Enter a number for the ID")))
-            accounts.append(account)
-
-            print(account.randomthing," this is your ID")
-
-
-
-        elif decision == "q":
-            break
-        #print("the balance is now", acc3.balance)
-
-__init__()
+    elif decision == "q":
+        break
